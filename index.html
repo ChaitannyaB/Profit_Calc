@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Calculator</title>
+</head>
+<body>
+    <div>
+        C.P. :  <input type="number" name="idk1" id="in1" min="0.00" max="10000.00" step="0.01">
+        <br>
+        <br>
+        MRP :   <input type="number" name="idk2" id="in2" min="0.00" max="10000.00" step="0.01">
+        <br>
+        <br>
+        R.Cut : <input type="number" name="idk3" id="in3" min="0.00" max="1.00" step="0.01">
+        <br>
+        <br>
+        <input type="button" id="bt1" value="Calculate">
+        <br>
+    </div>
+    <div>
+        <p id="output"></p>
+    </div>
+    <script>
+        const bt1 = document.getElementById("bt1");
+        bt1.addEventListener('click', function(){
+            let a = parseFloat(document.getElementById("in1").value);
+            let b = parseFloat(document.getElementById("in2").value);
+            let c = parseFloat(document.getElementById("in3").value);
+            if (isNaN(c)) {
+                c = 0.00;
+            }
+            const out = document.getElementById("output");
+            let p = b - (a+c*b);
+            let pp = p/(a+c*b);
+            out.innerHTML = "Profit: "+p.toFixed(2)+ "<br>" + "Profit Margin: " + pp.toFixed(2);
+            if(pp<5.00){
+                let xd = (b/5.0)-(c*b);
+                out.innerHTML += "<br>" + "The cost price should be: " + xd.toFixed(2);
+            }
+        });
+    </script>
+</body>
+</html>
